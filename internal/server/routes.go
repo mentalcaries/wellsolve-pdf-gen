@@ -13,6 +13,7 @@ var allowedOrigins = map[string]bool{
 func (s *Server) RegisterRoutes() http.Handler {
 	mux := http.NewServeMux()
 
+	
 	// Register routes
 	mux.HandleFunc("/", s.handleReadiness)
 	mux.HandleFunc("POST /pdf", s.generatePDF)

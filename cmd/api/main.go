@@ -9,7 +9,7 @@ import (
 	"syscall"
 	"time"
 
-	"wellsolve-pdf-gen/internal/server"
+	"github.com/mentalcaries/wellsolve-pdf-gen/internal/server"
 )
 
 func gracefulShutdown(apiServer *http.Server, done chan bool) {

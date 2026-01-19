@@ -1,4 +1,4 @@
-module wellsolve-pdf-gen
+module github.com/mentalcaries/wellsolve-pdf-gen
 
 go 1.25.1
 
