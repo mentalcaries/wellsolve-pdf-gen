@@ -38,6 +38,8 @@ func NewServer() *http.Server {
 		WriteTimeout: 30 * time.Second,
 	}
 
-	fmt.Printf("PDF service running on [%d]", port)
+	initializeNotificationCron()
+
+	fmt.Printf("PDF service running on [%d]\n", port)
 	return server
 }

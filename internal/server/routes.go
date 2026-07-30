@@ -52,6 +52,8 @@ func (s *Server) handleReadiness(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) handleHealthCheck(w http.ResponseWriter, r *http.Request) {
+	fmt.Println()
+	fmt.Println("Starting Gotenberg Health Check...")
 	resp, err := http.Get(s.gotenbergEndpoint + "/health")
 	if err != nil {
 		respondWithError(w, http.StatusInternalServerError, "PDF Service unreachable", err)
@@ -59,7 +61,6 @@ func (s *Server) handleHealthCheck(w http.ResponseWriter, r *http.Request) {
 	}
 	defer resp.Body.Close()
 
-	// Read the response body
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		respondWithError(w, http.StatusInternalServerError, "Failed to read health check response", err)
@@ -71,6 +72,6 @@ func (s *Server) handleHealthCheck(w http.ResponseWriter, r *http.Request) {
 		respondWithError(w, http.StatusInternalServerError, "Invalid health check response", err)
 		return
 	}
-
+	fmt.Println("Gotenberg Service healthy")
 	respondWithJSON(w, http.StatusOK, healthData)
 }
